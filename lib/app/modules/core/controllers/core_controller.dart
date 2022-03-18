@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart'; //Ver se da de Apagar
 import 'package:get/get.dart';
-import '../views/pages/home_page.dart';
-import '../components/modal_bottom_navigation_bar.dart';
+import '../../home/views/home_page.dart';
+import '../widgets/modal_bottom_navigation_bar.dart';
 
 class CoreController extends GetxController {
   RxInt pageIndex = 0.obs;
