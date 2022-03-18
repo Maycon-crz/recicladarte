@@ -2,7 +2,6 @@ import 'package:flutter/material.dart'; //Ver se da de Apagar
 import 'package:get/get.dart';
 import '../../home/views/home_page.dart';
 import '../widgets/modal_bottom_navigation_bar.dart';
-import '../../../routes/route_name.dart';
 
 class CoreController extends GetxController {
   RxInt pageIndex = 0.obs;
@@ -10,13 +9,6 @@ class CoreController extends GetxController {
 
   final List<Widget> _tabList = [
     HomePage(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
     Container(),
     Container(),
     Container(),
