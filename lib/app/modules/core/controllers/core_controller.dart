@@ -1,25 +1,10 @@
 import 'package:flutter/material.dart'; //Ver se da de Apagar
 import 'package:get/get.dart';
-import '../../home/views/home_page.dart';
-import '../../diy/views/diy_page.dart';
-import '../../charges/views/charges_page.dart';
-import '../../quiz/views/quiz_page.dart';
 import '../widgets/modal_bottom_navigation_bar.dart';
 
 class CoreController extends GetxController {
   RxInt pageIndex = 0.obs;
   RxString title = "".obs;
-
-  final List<Widget> _tabList = [
-    HomePage(),
-    DiyPage(),
-    ChargesPage(),
-    QuizPage(),
-  ];
-
-  List<Widget> get tabList {
-    return _tabList;
-  }
 
   onItemTapped(int index, context) {
     switch (index) {
