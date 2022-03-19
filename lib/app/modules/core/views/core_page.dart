@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/core_controller.dart';
+import '../controllers/bottom_navigation_pages_controller.dart';
 
-class CorePage extends GetView<CoreController> {
+class CorePage extends StatelessWidget {
+  final controller = Get.find<CoreController>();
+  final bottomnavigationpagesController = Get.find<BottomNavigationPagesController>();
   @override
   Widget build(BuildContext context) {
     void _onItemTapped(int index) {
-      controller.onItemTapped(index, context);
+      bottomnavigationpagesController.onItemTapped(index, context);
     }
 
     return Obx(
       () => Scaffold(
         appBar: AppBar(
-          title: Text('Recicladarte ${controller.title}'),
+          title: Text('Recicladarte ${bottomnavigationpagesController.title}'),
           backgroundColor: Colors.green,
         ),
         body: Stack(
           children: [
-            controller.tabList.elementAt(controller.pageIndex.value),
+            bottomnavigationpagesController.tabList.elementAt(bottomnavigationpagesController.pageIndex.value),
             Padding(
               padding: const EdgeInsets.all(30.0),
               child: Align(
@@ -32,7 +35,7 @@ class CorePage extends GetView<CoreController> {
                     showSelectedLabels: true,
                     showUnselectedLabels: true,
                     backgroundColor: Colors.black,
-                    currentIndex: controller.pageIndex.value,
+                    currentIndex: bottomnavigationpagesController.pageIndex.value,
                     onTap: _onItemTapped,
                     items: [
                       BottomNavigationBarItem(

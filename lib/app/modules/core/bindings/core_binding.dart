@@ -6,6 +6,6 @@ class CoreBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => CoreController());
-    Get.lazyPut(() => BottomNavigationPages());
+    Get.lazyPut(() => BottomNavigationPagesController());
   }
 }

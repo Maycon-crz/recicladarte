@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/core_controller.dart';
+import '../controllers/bottom_navigation_pages_controller.dart';
 
 class ModalBottomNavigation extends StatelessWidget {
-  final controller = Get.put(CoreController());
+  final controller = Get.find<BottomNavigationPagesController>();
   @override
   Widget build(BuildContext context) {
     return Container(
