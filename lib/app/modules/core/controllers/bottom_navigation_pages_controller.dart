@@ -1,29 +1,14 @@
 import 'package:flutter/material.dart'; //Ver se da de Apagar
 import 'package:get/get.dart';
-import '../views/pages/home_page.dart';
-import '../components/modal_bottom_navigation_bar.dart';
+import '../../home/views/home_page.dart';
+import '../../diy/views/diy_page.dart';
+import '../../charges/views/charges_page.dart';
+import '../../quiz/views/quiz_page.dart';
+import '../widgets/modal_bottom_navigation_bar.dart';
 
-class CoreController extends GetxController {
+class BottomNavigationPagesController extends GetxController {
   RxInt pageIndex = 0.obs;
   RxString title = "".obs;
-
-  final List<Widget> _tabList = [
-    HomePage(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
-  ];
-
-  List<Widget> get tabList {
-    return _tabList;
-  }
 
   onItemTapped(int index, context) {
     switch (index) {
@@ -47,5 +32,16 @@ class CoreController extends GetxController {
       return;
     }
     pageIndex.value = index;
+  }
+
+  final List<Widget> _tabList = [
+    HomePage(),
+    DiyPage(),
+    ChargesPage(),
+    QuizPage(),
+  ];
+
+  List<Widget> get tabList {
+    return _tabList;
   }
 }
