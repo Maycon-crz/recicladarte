@@ -8,5 +8,7 @@ class CoreBinding implements Bindings {
   void dependencies() {
     Get.lazyPut(() => CoreController());
     Get.lazyPut(() => BottomNavigationPagesController());
+    Get.lazyPut(() => Dio(BaseOptions(
+        baseUrl: 'https://5f7cba02834b5c0016b058aa.mockapi.io/api')));
   }
 }
