@@ -1,52 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 
-class HomePage extends StatelessWidget {
+import '../../core/controllers/core_controller.dart';
+
+class HomePage extends GetView<CoreController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: 100,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            Container(
-              width: 200,
-              color: Colors.purple[600],
-              child: const Center(
-                  child: Text(
-                'Item 1',
-                style: TextStyle(fontSize: 18, color: Colors.white),
-              )),
-            ),
-            Container(
-              width: 200,
-              color: Colors.purple[500],
-              child: const Center(
-                  child: Text(
-                'Item 2',
-                style: TextStyle(fontSize: 18, color: Colors.white),
-              )),
-            ),
-            Container(
-              width: 200,
-              color: Colors.purple[400],
-              child: const Center(
-                child: Text(
-                  'Item 3',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+      appBar: AppBar(
+        title: Text("Recicldarte"),
+        actions: [
+          PopupMenuButton(
+            initialValue: controller.limit,
+            onSelected: (int value) => controller.changePaginationFilter(value),
+            itemBuilder: (context) {
+              return [
+                CheckedPopupMenuItem(
+                  value: 15,
+                  checked: controller.limit == 15,
+                  child: Text('15 por página'),
                 ),
-              ),
-            ),
-            Container(
-              width: 200,
-              color: Colors.purple[300],
-              child: const Center(
-                  child: Text(
-                'Item 4',
-                style: TextStyle(fontSize: 18, color: Colors.white),
-              )),
-            ),
-          ],
+                CheckedPopupMenuItem(
+                  value: 20,
+                  checked: controller.limit == 20,
+                  child: Text('20 por página'),
+                ),
+                CheckedPopupMenuItem(
+                  value: 50,
+                  checked: controller.limit == 50,
+                  child: Text('50 por página'),
+                ),
+              ];
+            },
+          ),
+        ],
+      ),
+      body: Obx(
+        () => LazyLoadScrollView(
+          onEndOfPage: () => controller.nextPage(),
+          isLoading: controller.lastPage,
+          child: ListView.builder(
+            itemCount: controller.users.length,
+            itemBuilder: (context, index) {
+              final user = controller.users[index];
+              return ListTile(
+                  leading: Text(user.id),
+                  title: Text(user.name),
+                  subtitle: Text(user.userName));
+            },
+          ),
         ),
       ),
     );

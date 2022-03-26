@@ -5,7 +5,8 @@ import '../controllers/bottom_navigation_pages_controller.dart';
 
 class CorePage extends StatelessWidget {
   final controller = Get.find<CoreController>();
-  final bottomnavigationpagesController = Get.find<BottomNavigationPagesController>();
+  final bottomnavigationpagesController =
+      Get.find<BottomNavigationPagesController>();
   @override
   Widget build(BuildContext context) {
     void _onItemTapped(int index) {
@@ -14,13 +15,14 @@ class CorePage extends StatelessWidget {
 
     return Obx(
       () => Scaffold(
-        appBar: AppBar(
-          title: Text('Recicladarte ${bottomnavigationpagesController.title}'),
-          backgroundColor: Colors.green,
-        ),
+        // appBar: AppBar(
+        //   title: Text('Recicladarte ${bottomnavigationpagesController.title}'),
+        //   backgroundColor: Colors.green,
+        // ),
         body: Stack(
           children: [
-            bottomnavigationpagesController.tabList.elementAt(bottomnavigationpagesController.pageIndex.value),
+            bottomnavigationpagesController.tabList
+                .elementAt(bottomnavigationpagesController.pageIndex.value),
             Padding(
               padding: const EdgeInsets.all(30.0),
               child: Align(
@@ -35,7 +37,8 @@ class CorePage extends StatelessWidget {
                     showSelectedLabels: true,
                     showUnselectedLabels: true,
                     backgroundColor: Colors.black,
-                    currentIndex: bottomnavigationpagesController.pageIndex.value,
+                    currentIndex:
+                        bottomnavigationpagesController.pageIndex.value,
                     onTap: _onItemTapped,
                     items: [
                       BottomNavigationBarItem(
